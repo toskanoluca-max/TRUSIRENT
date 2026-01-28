@@ -1,0 +1,27 @@
+﻿@model TRUSIRENT.ViewModels.VehicleListViewModel
+
+@{
+    ViewData["Title"] = "Lista pojazdów";
+}
+
+<h2 class="mb-4">@Model.CurrentVehicleType</h2>
+
+<div class="row">
+    @foreach (var vehicle in Model.Vehicles)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm">
+                <img src="@vehicle.ImageThumbnailUrl" class="card-img-top" alt="@vehicle.Name" />
+
+                <div class="card-body">
+                    <h5 class="card-title">@vehicle.Name</h5>
+                    <p class="card-text text-muted">@vehicle.PricePerDay zł / dzień</p>
+
+                    <a href="/Vehicle/Details/@vehicle.VehicleId" class="btn btn-primary w-100">
+                        Szczegóły
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

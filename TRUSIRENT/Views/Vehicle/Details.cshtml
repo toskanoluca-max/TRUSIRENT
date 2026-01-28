@@ -1,0 +1,38 @@
+﻿@model TRUSIRENT.Models.Entities.Vehicle
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded shadow" />
+    </div>
+
+    <div class="col-md-6">
+        <h2>@Model.Name</h2>
+
+        <p class="text-muted">
+            Typ: @Model.VehicleType?.Name
+        </p>
+
+        <p class="lead">
+            @Model.Description
+        </p>
+
+        <h4 class="text-primary mb-4">
+            @Model.PricePerDay zł / dzień
+        </h4>
+
+        <form asp-controller="RentalCart" asp-action="AddToCart" method="post">
+            <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
+            <button type="submit" class="btn btn-success btn-lg w-100">
+                Dodaj do koszyka
+            </button>
+        </form>
+
+        <a href="/Vehicle/List" class="btn btn-secondary w-100 mt-3">
+            Powrót do listy
+        </a>
+    </div>
+</div>
